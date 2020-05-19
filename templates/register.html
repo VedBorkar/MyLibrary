@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Registeration</title>
+    <link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/loginstyle.css"/>
+</head>
+<body>
+
+    <div class="registerbox">
+        <h1>Register Here</h1>
+        <img src="/static/assets/images/avatar2.png" class="avatar" alt=""> 
+    <form action="register" method='post'>
+        {% csrf_token %}
+
+        <input type="text" name='first_name' placeholder='First name'>
+        <input type="text" name='last_name' placeholder='Last name'><br>
+        <input type="text" name='username' placeholder='Username'>
+        <input type="password" name='password1' placeholder='Password'><br>
+        <input type="password" name='password2' placeholder='Confirm Password'>
+        <input type="email" name='email' placeholder='Email ID'><br><br><br>
+        <input type='submit'>
+        <a href="/accounts/login">Already have an account?</a>
+
+    </form>
+
+    <div>
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>

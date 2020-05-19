@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge'> -->
+    <title>Wishlist</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .wishlist{
+            font-family: sans-serif;
+        }
+    </style>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <!-- <script src='main.js'></script> -->
+    <form action="wishlist">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">My Library</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/templates/bookspage">Search Books</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/templates/wishlist">Wishlist</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="wishlist">
+      <table class="table table-striped">
+        <thead>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </thead>
+        
+          {% for book in books %}
+          <tr>
+          <td>{{book.title}}</td> 
+          <td>{{book.desc}}</td> 
+          <td>{{book.author}}</td> 
+          {% if book.is_available %}
+          <td>Currently <font color="green">available</font></td>
+          {% endif %}
+          {% if book.is_available == False %}
+          <td>Currently <font color="red">unavailable</font></td>
+          {% endif %}
+          <td><a href="#" class="btn btn-primary">Rent</a></td>
+          <td><a href="#" class="btn btn-primary">Remove</a></td>
+          </tr>
+          {% endfor %}
+        
+      </div>
+    </form>
+</body>
+</html>
