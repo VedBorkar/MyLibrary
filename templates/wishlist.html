@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
+  
 <head>
     <meta charset='utf-8'>
     <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge'> -->
     <title>Wishlist</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
-        .wishlist{
-            font-family: sans-serif;
+      .wishlist{
+        font-family: sans-serif;
         }
+      
     </style>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
     <!-- <script src='main.js'></script> -->
     <form action="wishlist">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
+{% if user.is_authenticated %}
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">My Library</a>
@@ -50,16 +53,18 @@
         
           {% for book in books %}
           <tr>
+          <td>{{book.id}}</td> 
           <td>{{book.title}}</td> 
           <td>{{book.desc}}</td> 
           <td>{{book.author}}</td> 
           {% if book.is_available %}
           <td>Currently <font color="green">available</font></td>
+          <td><form action="wishlist" method="GET"><button type="input" name="rent" value="{{book.id}}" class="btn btn-primary">Rent</button></form></td>
           {% endif %}
           {% if book.is_available == False %}
           <td>Currently <font color="red">unavailable</font></td>
+          <td><button class="btn btn-secondary" disabled>Rent</td>
           {% endif %}
-          <td><a href="#" class="btn btn-primary">Rent</a></td>
           <td><a href="#" class="btn btn-primary">Remove</a></td>
           </tr>
           {% endfor %}
@@ -67,4 +72,14 @@
       </div>
     </form>
 </body>
+{% else %}
+<body>
+  <div class="wishlist">
+    <div class="container">
+      <br><br><br>
+    <h3>To view your wishlist, please <a href="/accounts/login">Login</a>.</h3>
+    </div>
+  </div>
+</body>
+{% endif %}
 </html>

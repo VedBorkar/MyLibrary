@@ -36,7 +36,22 @@ def search(request):
 
 def wishlist(request):
 
+    books = Book.objects.all()   
+
+    return render(request, "wishlist.html", {'books': books})
+
+    book_id = request.GET["rent"]
+
+    print(book_id)
+
+
+
+def availability(request):
+    
     books = Book.objects.all()
 
     return render(request, "wishlist.html", {'books': books})
+    # book_id = request.POST['rent']
+    # return redirect('/wishlist')
+    
 

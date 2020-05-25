@@ -5,5 +5,6 @@ urlpatterns = [
 path("", views.index, name="index"), 
 path("templates/bookspage", views.bookspage, name="bookspage"),
 path("templates/search", views.search, name="search"),
-path("templates/wishlist", views.wishlist, name="wishlist")
+path("templates/wishlist", views.wishlist, name="wishlist"),
+path("templates/availability", views.availability, name="availability")
 ]
