@@ -48,9 +48,7 @@ def wishlist(request):
 
 def availability(request):
     books = Book.objects.all()
-
+       
     return render(request, "wishlist.html", {'books': books})
     # book_id = request.POST['rent']
     # return redirect('/wishlist')
-    
-
