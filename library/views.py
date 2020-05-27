@@ -36,18 +36,17 @@ def search(request):
 
 def wishlist(request):
 
+    book_id = request.GET['book_id']
+    user_id = request.GET['user_id']
+    print(book_id)
+    print(user_id)
     books = Book.objects.all()   
 
     return render(request, "wishlist.html", {'books': books})
 
-    book_id = request.GET["rent"]
-
-    print(book_id)
-
 
 
 def availability(request):
-    
     books = Book.objects.all()
 
     return render(request, "wishlist.html", {'books': books})
